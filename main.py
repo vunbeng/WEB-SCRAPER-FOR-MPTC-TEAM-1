@@ -1,8 +1,13 @@
-from scraper import fetcher
-from scraper import parser
+from scraper import fetcher, parser, aligner
+from database import app
 
-hello = fetcher.fetch_html("https://moc.gov.kh/news/3168")
+response = fetcher.fetch_html("https://moc.gov.kh/news/3167")
 
-if hello:
-    parsed_data = parser.parse_html(hello.text)
-    print(parsed_data.texts)
+if response:
+    parsed_data = parser.parse_html(response.text)
+    aligned_data = aligner.split_text(parsed_data)
+
+    app.create_entry(url=response.url, 
+                     khmer_texts=aligned_data['khmer'], 
+                     english_texts=aligned_data['english'])
+    

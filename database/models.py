@@ -10,8 +10,8 @@ Base = declarative_base()
 class Article(Base):
     __tablename__ = "articles"
     id = Column(Integer, primary_key=True)
-    title = Column(String)
-    texts = Column(String)
     url = Column(String)
+    khmer_texts = Column(String)
+    english_texts = Column(String)
 
 Base.metadata.create_all(engine)
