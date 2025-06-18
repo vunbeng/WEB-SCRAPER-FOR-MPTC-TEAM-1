@@ -29,7 +29,8 @@ if __name__ == "__main__":
     print("Starting the scraper...")
 
     for i in range(1, 6):
-        url = f"https://example.com/article/{3100 + i}"
+        url = f"https://moc.gov.kh/news/{3100 + i}"
+        main(url)
 
     end_time = time.time()
     print(f"Scraper finished in {end_time - start_time:.2f} seconds")
