@@ -14,9 +14,14 @@ def parse_html(html_content):
     
     # Example extraction logic (modify as needed)
     title = soup.title.string if soup.title else 'No title found'
-    paragraphs = [p.get_text() for p in soup.find_all('p')]
+    paragraphs = soup.find_all('div', id='paragraphBlock')  # Adjust the selector based on actual HTML structure
     
+    texts = ""
+
+    for paragraph in paragraphs:
+        texts += paragraph.get_text(separator=' ', strip=True) + ' '
+
     return {
         'title': title,
-        'paragraphs': paragraphs
+        'texts': texts
     }

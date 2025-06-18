@@ -11,7 +11,7 @@ class Article(Base):
     __tablename__ = "articles"
     id = Column(Integer, primary_key=True)
     title = Column(String)
-    summary = Column(String)
+    texts = Column(String)
     url = Column(String)
 
 Base.metadata.create_all(engine)
