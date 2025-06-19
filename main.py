@@ -25,11 +25,15 @@ def main(url):
 
     
 if __name__ == "__main__":
+    url_range = input("Enter the range of pages to scrape (e.g., 1-5): ")
+    start_index, end_index = map(int, url_range.split('-'))
+
     start_time = time.time()
     print("Starting the scraper...")
 
-    for i in range(1, 6):
-        url = f"https://moc.gov.kh/news/{3100 + i}"
+
+    for i in range(start_index, end_index + 1):
+        url = f"https://moc.gov.kh/news/{i}"
         main(url)
 
     end_time = time.time()
